@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .selected {
+            background-color: burlywood;
+        }
+
+        li {
+            font-size: 2rem;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #00000080;
+            border-radius: 7px;
+        }
+
+        ul {
+            width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="demo1">DIV ID: demo1</div>
+    <div class="demo2" style="color: black;">DIV CLASS: demo2</div>
+    <ul id="liste" class="demo-liste">
+        <li class="r">List Item 1</li>
+        <li class="r">List Item 2</li>
+        <li class="b">List Item 3</li>
+        <li class="g">List Item 4</li>
+        <li class="b">List Item 5</li>
+        <li class="b">List Item 6</li>
+        <li class="r">List Item 7</li>
+        <li class="g">List Item 8</li>
+    </ul>
+    <script>
+        //JavaScript Temelleri:
+        //string (metinsel tanımlar):
+        var a1 = "Merhaba dünya";
+        var a2 = 'Merhaba dünya';
+        var a3 = "Merhaba dünya, bu ders ilker'in dersidir."
+        //var a33 = 'Merhaba dünya, bu ders ilker'in dersidir.' //Hatalı yazım
+        var a4 = 'Merhaba dünya, bu dersin hocası "İlker Turan"'
+        //var a44 = "Merhaba dünya, bu dersin hocası "İlker Turan"" //Hatalı yazım
+
+        //number (sayısal tanımlar):
+        var s1 = 54321;
+        var s2 = "54321";
+        var s3 = '54321';
+        var s4 = 123.45;
+        //var s44 = 123,45;//Hatalı yazım
+
+        //boolean (mantıksal tanımlar): yukarıdaki tüm hatalar burada da geçerli.
+        var m1 = true;
+        var m2 = false;
+        var m3 = 1; //true
+        var m4 = 0; //false
+        var m5 = "merhaba" //true
+        var m6 = "" //false
+        var m7 = 'merhaba' //true
+        var m8 = '' //false
+
+        //object (nesnel tanımlar): JSON (JavaScript Object Notation yapısının temelidir.)
+        /*
+        var obj = {
+            firstName ="ilker",
+            lastName = "turan",
+            age = 40,
+            smoking = false
+        }
+        */
+        /*
+        Nesne okumak:
+            obj.firstName -> ilker
+            obj.lastName -> turan
+        Nesne yazmak:
+            obj.firstName = "mustafa";
+        Yeni özellik (field) eklemek
+            obj.dogumYili = 1980;
+        */
+
+        //Array (Dizi tanımları):
+        var d1 = [1, 2, 3, 4, 5, 6, 7];
+
+        //function (Fonksiyonlar yani metotlar):
+        function dongu1() {
+            //Sadece çağırıldığı zaman çalışmasını istediğimiz kod satırları buraya yazılır.
+            for (var i = 0; i < d1.length; i++) {
+                //Standart döngü olarak çalışır.
+            }
+        }
+
+        dongu1(); //Fonksyion adı yazılarak çağırılır.
+
+        function dongu2(x) {
+            for (var i = 0; i < d1.length; i++) {
+                if (x == i) {
+                    //Standart kod satırları çalıştırılır.
+                }
+            }
+        }
+
+        dongu2(5); //Fonksyion adı ve istenen sayıda parametre yazılarak çağırılır.
+
+        //Date (Tarih tanımlamaları): get metotları genel olarak sayısal değer döner, karşılıklarını biz veririz. set komutları ise tarih nesnesinin değerlerini değiştirir.
+        /*
+        var dt = Date();
+        var day = dt.getDate();
+        var dayOfWeek = dt.getDay();
+        var month = dt.getMonth();
+        var year = dt.getFullYear();
+        var hour = dt.getHours();
+        var minute = dt.getMinutes();
+        var second = dt.getSeconds();
+*/
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        //jQuery Temelleri: Çekirdek (core) bir kütüphane yapısı olması sebebiyle CDN veya dosya üzerinden eklenme zorunluluğu taşır. jQuery kullanan tüm diğer kütüphaneler ve jQuery kod satırları kendisinden sonra eklenir.
+
+        //jQuery başlangıç olarak tüm dokümanın yüklenmesini bekler. jQuery yazımında '$' karakteri esastır.
+        $(document).ready(function () {
+            //Tüm doküman yüklendiğinde bu alana yazılan her şey çalıştırılmaya başlar.
+            //Element tanımlamaları:
+
+            //ID ile:
+            //JavaScript:
+            var d1 = document.getElementById("demo1");
+            d1.addEventListener("click", function () {
+                d1.innerText = "Ben javascript tarafından click olayına yazıldım.";
+            });
+            //JQuery:
+            var d2 = $("#demo1");
+            d2.dblclick(function () {
+                d2.text("Ben jQuery tarafından dblclick olayına yazıldım.");
+            });
+
+            //CLASS ile: Aynı sınıf isimlerini taşıyan tüm elemenler element dizisi olarak tanımlanır.
+            //JavaScript:
+            var d3 = document.getElementsByClassName("demo2");
+            for (var i = 0; i < d3.length; i++) {
+                d3[i].addEventListener("click", function () {
+                    d3[i].style.color = "red";
+                });
+            }
+            //jQuery:
+            var d4 = $(".demo2");
+            d4.dblclick(function () {
+                d4.css("color", "blue");
+            });
+            //Etiket ile: Aynı etiketlere sahip tüm elemenler element dizisi olarak tanımlanır.
+            //JavaScript:
+            var d5 = document.getElementsByTagName("div");
+            //jQuery:
+            var d6 = $("div");
+            d6.attr({ "width": 500, "style": "font-size:20px;" });
+
+            $("li").mouseover(function () {
+                if ($(this).hasClass('r')) {
+                    $(this).css("color", "red");
+                }
+                else if ($(this).hasClass('g')) {
+                    $(this).css("color", "green");
+                }
+                else if ($(this).hasClass('b')) {
+                    $(this).css("color", "blue");
+                }
+            });
+            $("li").mouseout(function () {
+                $(this).css("color", "black");
+            })
+
+            $("li").click(function(){
+                $(this).toggleClass("selected");// Varsa kaldırır, yoksa ekler. Diğer sınıflara dokunmaz.
+            });
+        });
+
+    </script>
+</body>
+
+</html>
