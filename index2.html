@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="width: 640px!important; height: 480px!important;">
+        <canvas id="myChart1"></canvas>
+    </div>
+    <div style="width: 640px!important; height: 480px!important;">
+        <canvas id="myChart2"></canvas>
+    </div>
+    <div style="width: 640px!important; height: 640px!important;">
+        <canvas id="myChart3"></canvas>
+    </div>
+    <div style="width: 640px!important; height: 480px!important;">
+        <canvas id="myChart4"></canvas>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script>
+        var ctx1 = document.getElementById('myChart1').getContext('2d');
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var ctx3 = document.getElementById('myChart3').getContext('2d');
+        var ctx4 = document.getElementById('myChart4').getContext('2d');
+
+        var myChart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                datasets: [{
+                    label: '# of sells',
+                    data: [12, 19, 5, 2, 3, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: '# of buys',
+                    data: [15, 11, 9, 12, 13, 1],
+                    backgroundColor: [
+                        'rgba(0, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var myChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                datasets: [{
+                    label: '# of sells',
+                    data: [12, 19, 5, 2, 3, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: '# of buys',
+                    data: [15, 11, 9, 12, 13, 1],
+                    backgroundColor: [
+                        'rgba(0, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        var myChart3 = new Chart(ctx3, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Eating',
+                    'Drinking',
+                    'Sleeping',
+                    'Designing',
+                    'Coding',
+                    'Cycling',
+                    'Running'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [65, 59, 90, 81, 56, 55, 40],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }, {
+                    label: 'My Second Dataset',
+                    data: [28, 48, 40, 19, 96, 27, 100],
+                    fill: true,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    pointBackgroundColor: 'rgb(54, 162, 235)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(54, 162, 235)'
+                }]
+            },
+            options: {
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                }
+            },
+        });
+
+        var myChart4 = new Chart(ctx4, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [50, 55, 60, 33],
+                    labels: ["India", "China", "US", "Canada"],
+                    backgroundColor: [
+                        "#4b77a9",
+                        "#5f255f",
+                        "#d21243",
+                        "#B27200"
+                    ],
+                    borderColor: "#fff"
+                }]
+            },
+            options: {
+                tooltips: {
+                    enabled: false
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx4) => {
+                            let sum = 0;
+                            let dataArr = ctx4.chart.data.datasets[0].data;
+                            dataArr.map(data => {
+                                sum += data;
+                            });
+                            let percentage = (value * 100 / sum).toFixed(2) + "%";
+                            return percentage;
+                        },
+                        color: '#fff',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
