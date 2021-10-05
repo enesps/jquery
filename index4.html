@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .kare {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kare">KARE</div>
+    <hr />
+    <button id="s">Göster</button>
+    <button id="h">Gizle</button>
+    <button id="t">Göster veya Gizle</button>
+    <button id="ss">Kaydırarak Göster</button>
+    <button id="sh">Kaydırarak Gizle</button>
+    <button id="st">Kaydırarak Göster veya Gizle</button>
+    <button id="fs">Netleştirerek Göster</button>
+    <button id="fh">Soluklaştırarak Gizle</button>
+    <button id="ft">Netleştirerek Göster veya Soluklaştırarak Gizle</button>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        $("#s").click(function () { $(".kare").show(); });
+        $("#h").click(function () { $(".kare").hide(); });
+        $("#t").click(function () { $(".kare").toggle(); });
+        $("#ss").click(function () { $(".kare").slideDown("slow"); });
+        $("#sh").click(function () { $(".kare").slideUp("slow"); });
+        $("#st").click(function () { $(".kare").slideToggle("slow"); });
+        $("#fs").click(function () { $(".kare").fadeIn("slow"); });
+        $("#fh").click(function () { $(".kare").fadeOut("slow"); });
+        $("#ft").click(function () { $(".kare").fadeToggle("slow"); });
+    </script>
+</body>
+
+</html>
